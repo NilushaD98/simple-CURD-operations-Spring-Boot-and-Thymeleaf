@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>New Student Form</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <style>
+
+  </style>
+</head>
+<body>
+<div class="container-fluid" >
+
+  <div>
+    <h1 class="text-center">New Student Form</h1>
+  </div>
+  <div>
+    <form th:action="@{addStudent}" method="post" th:object="${student}" style="max-width: 500px; margin: 0 auto" >
+      <input type="hidden" th:field="*{ID}">
+      <div class="border border-secondary rounded p-3">
+        <div >
+          <label class=""> E-Mail :</label>
+          <div >
+              <input type="email" th:field="*{email}" class="form-control" required minlength="8" maxlength="255"/>
+          </div>
+        </div>
+        <div >
+          <label class=""> First Name :</label>
+          <div >
+              <input type="text" th:field="*{firstName}" class="form-control"/>
+          </div>
+        </div>
+        <div >
+          <label class=""> Last Name :</label>
+          <div >
+            <input type="text" th:field="*{lastName}" class="form-control"/>
+          </div>
+        </div>
+        <div >
+          <label class=""> Password :</label>
+          <div >
+            <input type="password" th:field="*{password}" class="form-control" required minlength="6" maxlength="15"/>
+          </div>
+        </div>
+        <div >
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary m-2"/>Save</button>
+            <button type="button" class="btn btn-primary m-2" onclick="cancelForm()"/>Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  function cancelForm(){
+    window.location= "[[@{students}]]";
+  }
+</script>
+</body>
+</html>
